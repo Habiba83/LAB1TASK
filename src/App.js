@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { setupNotifications, subscribeToTopic, unsubscribeFromTopic } from './firebase';
+import './App.css'; 
 
 function App() {
   const [token, setToken] = useState('');
@@ -31,19 +32,27 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Notification Channels</h1>
+    <div className="app-container">
+      <h1 className="title">Notification Channels</h1>
+      <div className="button-group">
+        {/* Buttons for Sports Topic */}
+        <div className="topic-group">
+          <button className="subscribe-btn" onClick={() => handleSubscribe('sports')}>Subscribe to Sports</button>
+          <button className="unsubscribe-btn" onClick={() => handleUnsubscribe('sports')}>Unsubscribe from Sports</button>
+        </div>
 
-      {/* Buttons for Sports Topic */}
-      <button onClick={() => handleSubscribe('sports')}>Subscribe to Sports</button>
-      <button onClick={() => handleUnsubscribe('sports')}>Unsubscribe from Sports</button>
+        {/* Buttons for Fashion Topic */}
+        <div className="topic-group">
+          <button className="subscribe-btn" onClick={() => handleSubscribe('Fashion')}>Subscribe to Fashion</button>
+          <button className="unsubscribe-btn" onClick={() => handleUnsubscribe('Fashion')}>Unsubscribe from Fashion</button>
+        </div>
 
-      <button onClick={() => handleSubscribe('Fashion')}>Subscribe to Fashion</button>
-      <button onClick={() => handleUnsubscribe('Fashion')}>Unsubscribe from Fashion</button>
-
-      
-      <button onClick={() => handleSubscribe('cooking')}>Subscribe to cooking</button>
-      <button onClick={() => handleUnsubscribe('cooking')}>Unsubscribe from cooking</button>
+        {/* Buttons for Cooking Topic */}
+        <div className="topic-group">
+          <button className="subscribe-btn" onClick={() => handleSubscribe('cooking')}>Subscribe to Cooking</button>
+          <button className="unsubscribe-btn" onClick={() => handleUnsubscribe('cooking')}>Unsubscribe from Cooking</button>
+        </div>
+      </div>
     </div>
   );
 }
